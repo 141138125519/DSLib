@@ -1708,6 +1708,16 @@
         "build": {
           "build/netcoreapp3.1/xunit.runner.visualstudio.props": {}
         }
+      },
+      "DSLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/DSLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DSLib.dll": {}
+        }
       }
     }
   },
@@ -5500,10 +5510,16 @@
         "xunit.runner.visualstudio.2.4.5.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
+    },
+    "DSLib/1.0.0": {
+      "type": "project",
+      "path": "../DSLib/DSLib.csproj",
+      "msbuildProject": "../DSLib/DSLib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "DSLib >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 17.7.1",
       "coverlet.collector >= 3.2.0",
       "xunit >= 2.4.2",
@@ -5542,7 +5558,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Projects\\DSLib\\DSLib\\DSLib.csproj": {
+              "projectPath": "D:\\Projects\\DSLib\\DSLib\\DSLib.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
