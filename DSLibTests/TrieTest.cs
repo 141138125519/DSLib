@@ -46,15 +46,12 @@ namespace DSLibTests
             Trie trie = new();
             Assert.NotNull(trie);
 
-            List<string> words = new();
-            words.Add("word");
-            words.Add("work");
-            //words.Add("worked");
-            words.Sort();
+            List<string> words = new() { "word", "work", "worked" }; ;
 
-            trie.Insert("word");
-            trie.Insert("work");
-            //trie.Insert("worked");
+            foreach (string word in words)
+            {
+                trie.Insert(word);
+            }
 
             Assert.True(trie.ContainsWord("word"));
             Assert.True(trie.ContainsPrefix("wo"));
@@ -64,15 +61,37 @@ namespace DSLibTests
             Assert.NotEmpty(trie.PossiblePrefixWords("w"));
 
             List<string> results = trie.PossiblePrefixWords("wo");
-            results.Sort();
             Assert.Equal(words, results);
 
             results = trie.PossiblePrefixWords("wor");
-            results.Sort();
             Assert.Equal(words, results);
-            //Assert.Equal(words, trie.PrefixPossibleWords("wo"));
-            //Assert.Equal(words, trie.PrefixPossibleWords("wor"));
+        }
 
+        [Fact]
+        public void DeleteWordTest()
+        {
+            Trie trie = new();
+            Assert.NotNull(trie);
+
+            List<string> words = new() { "word", "work" };
+            
+            foreach (string word in words)
+            {
+                trie.Insert(word);
+            }
+
+            Assert.True(trie.ContainsWord("word"));
+            Assert.True(trie.ContainsWord("work"));
+
+            var results = trie.PossiblePrefixWords("w");
+            Assert.Equal(words, results);
+
+            trie.Delete("work");
+            results = trie.PossiblePrefixWords("w");
+            Assert.NotEqual(words, results);
+
+            words.Remove("work");
+            Assert.Equal(words, results);
         }
     }
 }

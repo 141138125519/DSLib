@@ -126,5 +126,55 @@ namespace DSLib
 
             return words;
         }
+
+        public void Delete(string word)
+        {
+            Trie trie = this;
+            Remove(trie, word, 0);
+        }
+
+        private static Trie Remove(Trie node, string word, int depth)
+        {
+            if (node == null)
+                return node;
+
+            if (depth == word.Length)
+            {
+                if (node.IsWord)
+                {
+                    node.IsWord = false;
+                }
+
+                if (IsEmpty(node))
+                {
+                    node = null;
+                }
+
+                return node;
+            }
+
+            int index = word[depth] - 'a';
+            node.Children[index] = Remove(node.Children[index], word, depth + 1);
+
+            if (IsEmpty(node) && !node.IsWord)
+            {
+                node = null;
+            }
+
+            return node;
+        }
+
+        private static bool IsEmpty(Trie trie)
+        {
+            foreach(var child in trie.Children)
+            {
+                if (child != null)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }
