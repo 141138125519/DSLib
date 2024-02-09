@@ -74,7 +74,7 @@ namespace DSLibTests
             Assert.NotNull(trie);
 
             List<string> words = new() { "word", "work" };
-            
+
             foreach (string word in words)
             {
                 trie.Insert(word);

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DSLib
+﻿namespace DSLib
 {
     public class Trie
     {
@@ -166,7 +160,7 @@ namespace DSLib
 
         private static bool IsEmpty(Trie trie)
         {
-            foreach(var child in trie.Children)
+            foreach (var child in trie.Children)
             {
                 if (child != null)
                 {
