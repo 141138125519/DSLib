@@ -4,4 +4,5 @@ A library of data structures built mainly to refresh my knowledge and act as a p
 
 Currently contains:
 - Trie
+- B-Tree
 - More coming at some point
